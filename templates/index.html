@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>BMI Calculator</h1>
+{% if error %}
+    <div style="color: red; margin-bottom: 15px;">
+        <strong>Error:</strong> {{ error }}
+    </div>
+{% endif %}
 <form method="POST">
     <label>Weight (kg):</label>
     <input type="text" name="weight" required><br><br>
