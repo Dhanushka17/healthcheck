@@ -1,3 +1,3 @@
 # healthcheck
-checks your mental and physical health 
+checks your physical health 
 
