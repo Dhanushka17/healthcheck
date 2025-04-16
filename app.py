@@ -34,9 +34,6 @@ def index():
 def introduction():
     return render_template('intro.html')
 
-@app.route('/sustainable-engineering')
-def sustainable_engineering():
-    return render_template('sustainable.html')
 
 @app.route('/pros-cons')
 def pros_cons():
