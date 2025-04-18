@@ -6,6 +6,14 @@ def calculate_bmi(weight, height):
     if weight <= 0 or height <= 0:
         raise ValueError("Weight and height must be positive values")
     return weight / (height ** 2)
+def calculate_bmr(gender,age,weight,height):
+    if gender=='female':
+        return 655.1 + (9.563*weight) + (1.850*height) - (4.676*age)
+    elif gender=='male':
+        return 655.1 + (9.563*weight) + (1.850*height) - (4.676*age)
+    else:
+        raise ValueError("Gender must be 'male' or 'female'")
+
 
 def get_bmi_category(bmi):
     if bmi < 18.5:

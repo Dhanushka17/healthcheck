@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+    <title>BMR Calculator</title>
+</head>
+<body>
+    <h1>BMR Calculator</h1>
+
+    <form method="POST">
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" name="weight" step="any" required><br>
+        
+        <label for="height">Height (cm):</label>
+        <input type="number" id="height" name="height" step="any" required><br>
+
+        <label for="age">Age (years):</label>
+        <input type="number" id="age" name="age" required><br>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select><br><br>
+
+        <button type="submit">Calculate BMR</button>
+    </form>
+
+    {% if bmr_result is not none %}
+        <h3>Your BMR: {{ bmr_result }} kcal/day</h3>
+    {% endif %}
+
+    <br><a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>
