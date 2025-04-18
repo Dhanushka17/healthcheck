@@ -1,109 +1,428 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Understanding BMI</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to right, #d4fc79, #96e6a1);
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 900px;
-            background: white;
-            padding: 30px;
-            margin: 40px auto;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        h1, h2 {
-            color: #2b6777;
-            text-align: center;
-        }
-        p {
-            color: #333;
-            font-size: 1.1em;
-            line-height: 1.8;
-        }
-        ul {
-            color: #444;
-            line-height: 1.7;
-            font-size: 1em;
-            margin-left: 20px;
-        }
-        .image-row {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        .image-row img {
-            width: 200px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .pros-cons {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-        .pros, .cons {
-            width: 45%;
-            background-color: #f0f8ff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.05);
-        }
-        .pros h3, .cons h3 {
-            color: #3a7ca5;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Understanding BMI</h1>
-        <p>
-            BMI stands for Body Mass Index. It is a simple and widely used method to estimate a healthy body weight 
-            based on an individual's height. The formula is: 
-            <strong>BMI = weight (kg) / height (m)<sup>2</sup></strong>.
-        </p>
-        <p>
-            Based on BMI, individuals are categorized as underweight, normal weight, overweight, or obese. 
-            Although BMI does not measure body fat directly, it is a useful screening tool for identifying possible 
-            weight-related health issues.
-        </p>
-        
-        <div class="image-row">
-            <img src="https://www.cdc.gov/healthyweight/images/assessing/bmi-adult-fb-600x315.jpg" alt="BMI Chart">
-            <img src="https://www.researchgate.net/profile/Daniel-Zelaya/publication/321907569/figure/fig1/AS:577811133657090@1514130135283/BMI-categories.png" alt="BMI Categories">
-            <img src="https://cdn1.byjus.com/wp-content/uploads/2020/10/BMI.jpg" alt="BMI Explanation">
-        </div>
+{% extends "base.html" %}
+{% block content %}
+<h1>Understanding BMI and BMR</h1>
 
-        <h2>Pros and Cons of BMI</h2>
-        <div class="pros-cons">
-            <div class="pros">
-                <h3>Pros:</h3>
-                <ul>
-                    <li>Quick and easy to calculate.</li>
-                    <li>Useful for large-scale population assessments.</li>
-                    <li>Inexpensive method to assess potential health risks.</li>
-                    <li>Provides a general indication of healthy weight range.</li>
-                </ul>
-            </div>
-            <div class="cons">
-                <h3>Cons:</h3>
-                <ul>
-                    <li>Does not differentiate between muscle and fat.</li>
-                    <li>May misclassify athletic or muscular individuals as overweight.</li>
-                    <li>Does not consider age, sex, or ethnicity differences.</li>
-                    <li>Does not reflect fat distribution or body composition.</li>
-                </ul>
-            </div>
+<div class="section">
+    <h2>Body Mass Index (BMI)</h2>
+    <p>
+        BMI is a simple calculation that uses your height and weight to estimate if you have a healthy body weight.
+        It's calculated using the formula: <strong>BMI = weight (kg) / height (m)<sup>2</sup></strong>.
+    </p>
+    <p>
+        Based on BMI, individuals are categorized as:
+    </p>
+    <ul>
+        <li><strong>Underweight:</strong> BMI less than 18.5</li>
+        <li><strong>Normal weight:</strong> BMI 18.5 to 24.9</li>
+        <li><strong>Overweight:</strong> BMI 25 to 29.9</li>
+        <li><strong>Obese:</strong> BMI 30 or higher</li>
+    </ul>
+    
+    <h3>Why BMI is Important?</h3>
+    <p>
+        BMI is important because it provides a quick and reliable way to assess weight relative to height and estimate body fat percentage.
+        It's used as a screening tool for identifying individuals at increased risk of chronic diseases and can help guide healthcare 
+        providers in developing personalized health plans.
+    </p>
+    
+    <h3>History of BMI</h3>
+    <p>
+        BMI was developed by Belgian mathematician Adolphe Quetelet in the 1830s. Originally called the Quetelet Index,
+        it was renamed Body Mass Index in 1972 by physiologist Ancel Keys. Despite being nearly 200 years old, 
+        BMI remains widely used in medical and fitness settings worldwide.
+    </p>
+
+    <h3>Limitations of BMI</h3>
+    <p>
+        While useful as a general screening tool, BMI has several limitations:
+    </p>
+    <ul>
+        <li>It doesn't differentiate between muscle and fat mass (athletes often have high BMIs despite low body fat)</li>
+        <li>It doesn't account for age-related muscle loss in older adults</li>
+        <li>It doesn't consider differences in body composition across ethnicities</li>
+        <li>It doesn't measure where fat is distributed (abdominal fat poses greater health risks)</li>
+        <li>It may not be appropriate for children, pregnant women, or the elderly</li>
+    </ul>
+    
+    <h3>Other Body Composition Measurements</h3>
+    <p>
+        For a more comprehensive assessment, BMI can be complemented with:
+    </p>
+    <ul>
+        <li><strong>Waist circumference:</strong> Measures abdominal fat, with greater health risks at >35 inches (women) or >40 inches (men)</li>
+        <li><strong>Waist-to-hip ratio:</strong> Distribution of fat with higher ratios indicating higher health risks</li>
+        <li><strong>Body fat percentage:</strong> Directly measures fat versus lean mass using methods like skinfold measurements, bioelectrical impedance, or DEXA scans</li>
+    </ul>
+    
+    <h3>Health Implications of Different BMI Categories</h3>
+    <p>
+        Different BMI ranges are associated with various health outcomes:
+    </p>
+    <ul>
+        <li><strong>Underweight (BMI < 18.5):</strong> 
+            <ul>
+                <li>Increased risk of malnutrition and nutrient deficiencies</li>
+                <li>Weakened immune system</li>
+                <li>Hormonal imbalances</li>
+                <li>Reduced bone density</li>
+                <li>Fertility issues</li>
+            </ul>
+        </li>
+        <li><strong>Normal weight (BMI 18.5-24.9):</strong> 
+            <ul>
+                <li>Generally associated with optimal health outcomes</li>
+                <li>Lower risk of cardiovascular disease</li>
+                <li>Lower risk of type 2 diabetes</li>
+                <li>Lower risk of certain cancers</li>
+                <li>Improved longevity</li>
+            </ul>
+        </li>
+        <li><strong>Overweight (BMI 25-29.9):</strong> 
+            <ul>
+                <li>Moderately increased risk of cardiovascular disease</li>
+                <li>Higher risk of developing type 2 diabetes</li>
+                <li>Increased risk of sleep apnea</li>
+                <li>Increased risk of osteoarthritis</li>
+                <li>Some studies suggest a "BMI paradox" where slightly overweight individuals may have better survival rates in certain conditions</li>
+            </ul>
+        </li>
+        <li><strong>Obese (BMI ≥ 30):</strong> 
+            <ul>
+                <li>Significantly increased risk of cardiovascular diseases</li>
+                <li>Much higher risk of type 2 diabetes</li>
+                <li>Increased risk of several cancers (endometrial, breast, colon)</li>
+                <li>Increased risk of stroke</li>
+                <li>Breathing problems and sleep apnea</li>
+                <li>Metabolic syndrome</li>
+                <li>Psychological effects like depression and poor body image</li>
+            </ul>
+        </li>
+    </ul>
+    
+    <h3>BMI Across Different Populations</h3>
+    <p>
+        Standard BMI categories may not be equally applicable across all populations:
+    </p>
+    <ul>
+        <li><strong>Asian populations:</strong> Health risks may begin at lower BMI thresholds (23 instead of 25 for overweight)</li>
+        <li><strong>Athletes:</strong> May have higher BMI due to muscle mass despite healthy body composition</li>
+        <li><strong>Elderly:</strong> May have healthy BMI numbers despite having lost muscle mass and gained fat (sarcopenic obesity)</li>
+        <li><strong>Children and teens:</strong> Use age and sex-specific BMI percentiles rather than adult thresholds</li>
+        <li><strong>Pregnant women:</strong> Have specific weight gain guidelines based on pre-pregnancy BMI</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>Basal Metabolic Rate (BMR)</h2>
+    <p>
+        BMR represents the minimum amount of energy needed to keep your body functioning at rest. 
+        It's the number of calories your body burns while performing basic life-sustaining functions like:
+    </p>
+    <ul>
+        <li>Breathing</li>
+        <li>Circulating blood</li>
+        <li>Cell production</li>
+        <li>Maintaining body temperature</li>
+        <li>Brain and nerve function</li>
+    </ul>
+    <p>
+        BMR is calculated using formulas that consider gender, age, height, and weight.
+        Understanding your BMR can help you determine your daily caloric needs for maintaining, losing, or gaining weight.
+    </p>
+    
+    <h3>Factors Affecting BMR</h3>
+    <p>
+        Several factors can increase or decrease your BMR:
+    </p>
+    <ul>
+        <li><strong>Age:</strong> BMR typically decreases by about 2% per decade after age 20</li>
+        <li><strong>Body composition:</strong> Muscle burns more calories at rest than fat tissue</li>
+        <li><strong>Gender:</strong> Men generally have higher BMRs than women due to greater muscle mass</li>
+        <li><strong>Hormones:</strong> Thyroid hormones, growth hormone, and testosterone can all affect BMR</li>
+        <li><strong>Environmental temperature:</strong> Extreme hot or cold temperatures can increase BMR</li>
+        <li><strong>Physical activity:</strong> Regular exercise can boost BMR by increasing muscle mass</li>
+        <li><strong>Fasting or severe calorie restriction:</strong> Can lower BMR as the body conserves energy</li>
+    </ul>
+    
+    <h3>BMR Calculation Methods</h3>
+    <p>
+        Several equations are used to estimate BMR:
+    </p>
+    <ul>
+        <li><strong>Harris-Benedict Equation:</strong> The original formula from 1919</li>
+        <li><strong>Mifflin-St Jeor Equation:</strong> A more recent and accurate formula (the one we use)</li>
+        <li><strong>Katch-McArdle Formula:</strong> Uses lean body mass for greater accuracy</li>
+    </ul>
+    
+    <h3>BMR vs. TDEE</h3>
+    <p>
+        BMR shouldn't be confused with Total Daily Energy Expenditure (TDEE), which includes:
+    </p>
+    <ul>
+        <li><strong>BMR:</strong> Calories burned at complete rest (60-75% of TDEE)</li>
+        <li><strong>TEF:</strong> Thermic Effect of Food - calories burned digesting food (10% of TDEE)</li>
+        <li><strong>NEAT:</strong> Non-Exercise Activity Thermogenesis - daily movement like walking, standing (15-30% of TDEE)</li>
+        <li><strong>EAT:</strong> Exercise Activity Thermogenesis - planned exercise (varies widely)</li>
+    </ul>
+    <p>
+        To estimate your TDEE, multiply your BMR by an activity factor:
+    </p>
+    <ul>
+        <li>Sedentary (little/no exercise): BMR × 1.2</li>
+        <li>Lightly active (1-3 days/week): BMR × 1.375</li>
+        <li>Moderately active (3-5 days/week): BMR × 1.55</li>
+        <li>Very active (6-7 days/week): BMR × 1.725</li>
+        <li>Extremely active (athletes): BMR × 1.9</li>
+    </ul>
+    
+    <h3>Practical Applications of BMR</h3>
+    <p>
+        Your BMR can be used for several practical health applications:
+    </p>
+    <ul>
+        <li><strong>Weight Management:</strong>
+            <ul>
+                <li>Weight loss: Create a caloric deficit (TDEE - 500 calories/day = ~1 lb loss per week)</li>
+                <li>Weight gain: Create a caloric surplus (TDEE + 500 calories/day = ~1 lb gain per week)</li>
+                <li>Weight maintenance: Consume calories equal to your TDEE</li>
+            </ul>
+        </li>
+        <li><strong>Meal Planning:</strong>
+            <ul>
+                <li>Divide your daily calorie target across meals and snacks</li>
+                <li>Ensure adequate macronutrient distribution (proteins, carbohydrates, fats)</li>
+                <li>Plan meal timing around physical activity</li>
+            </ul>
+        </li>
+        <li><strong>Exercise Planning:</strong>
+            <ul>
+                <li>Calculate calories burned during various activities</li>
+                <li>Determine appropriate exercise intensity and duration</li>
+                <li>Balance cardio and strength training for optimal metabolic health</li>
+            </ul>
+        </li>
+    </ul>
+    
+    <h3>Medical Conditions Affecting BMR</h3>
+    <p>
+        Several medical conditions can significantly impact your BMR:
+    </p>
+    <ul>
+        <li><strong>Hypothyroidism:</strong> Decreases BMR, making weight gain more likely</li>
+        <li><strong>Hyperthyroidism:</strong> Increases BMR, potentially causing unintended weight loss</li>
+        <li><strong>Cushing's syndrome:</strong> Decreases BMR through hormonal changes</li>
+        <li><strong>Polycystic ovary syndrome (PCOS):</strong> May reduce BMR in affected women</li>
+        <li><strong>Hormonal imbalances:</strong> Can increase or decrease BMR depending on the specific hormones affected</li>
+    </ul>
+</div>
+
+<div class="image-row">
+    <div class="image-container">
+        <img src="https://www.cdc.gov/healthyweight/images/assessing/bmi-adult-fb-600x315.jpg" alt="BMI Chart">
+        <p class="image-caption">BMI Categories Chart</p>
+    </div>
+</div>
+
+<!-- Custom BMR Diagram that doesn't rely on external images -->
+<div class="custom-bmr-diagram">
+    <h3>Basal Metabolic Rate Components</h3>
+    <div class="diagram-container">
+        <div class="diagram-item">
+            <div class="circle" style="background-color: #4e73df">60-75%</div>
+            <p>Basal Metabolism</p>
+        </div>
+        <div class="diagram-item">
+            <div class="circle" style="background-color: #1cc88a">10%</div>
+            <p>Thermic Effect of Food</p>
+        </div>
+        <div class="diagram-item">
+            <div class="circle" style="background-color: #f6c23e">15-30%</div>
+            <p>Physical Activity</p>
         </div>
     </div>
-</body>
-</html>
+    <p class="diagram-description">
+        Your Basal Metabolic Rate (BMR) is the largest component of your daily energy expenditure.
+        When combined with the thermic effect of food and physical activity, it makes up your
+        Total Daily Energy Expenditure (TDEE).
+    </p>
+</div>
+
+<div class="section">
+    <h2>Using BMI and BMR Together</h2>
+    <p>
+        When used together, BMI and BMR provide a more comprehensive picture of your health:
+    </p>
+    <ul>
+        <li><strong>Weight Management:</strong> BMR helps determine calorie needs while BMI helps set weight goals</li>
+        <li><strong>Fitness Planning:</strong> BMR helps calculate energy needs for different activity levels</li>
+        <li><strong>Health Assessment:</strong> BMI identifies potential weight-related health risks</li>
+        <li><strong>Personalized Nutrition:</strong> BMR guides calorie intake while BMI helps determine if weight loss/gain is needed</li>
+    </ul>
+    <p>
+        For optimal health outcomes, it's best to use these measurements as part of a comprehensive assessment
+        that includes other health markers like blood pressure, cholesterol levels, and lifestyle factors.
+    </p>
+</div>
+
+<div class="section">
+    <h2>Frequently Asked Questions</h2>
+    
+    <div class="faq-item">
+        <h3>Is BMI accurate for everyone?</h3>
+        <p>
+            No, BMI has limitations and may not accurately represent body composition for athletes, the elderly, 
+            pregnant women, or certain ethnic groups. It's best used as a screening tool rather than a diagnostic measurement.
+        </p>
+    </div>
+    
+    <div class="faq-item">
+        <h3>Can I have a normal BMI but still be unhealthy?</h3>
+        <p>
+            Yes, this is known as "normal weight obesity" or being "skinny fat." You can have a normal BMI 
+            but unhealthy levels of body fat or poor metabolic health. This is why BMI should be used alongside 
+            other health measurements.
+        </p>
+    </div>
+    
+    <div class="faq-item">
+        <h3>How can I increase my BMR?</h3>
+        <p>
+            The most effective ways to increase BMR include building muscle through strength training, 
+            staying hydrated, eating regular meals (avoiding severe calorie restriction), getting adequate sleep, 
+            and addressing any underlying hormonal imbalances.
+        </p>
+    </div>
+    
+    <div class="faq-item">
+        <h3>How does aging affect BMI and BMR?</h3>
+        <p>
+            As we age, we typically lose muscle mass and gain fat, which can lower BMR. BMI may remain stable 
+            despite these composition changes, potentially masking health issues. Older adults may need to maintain 
+            a slightly lower BMI range and adjust calorie intake to account for decreased BMR.
+        </p>
+    </div>
+    
+    <div class="faq-item">
+        <h3>Should I calculate my BMR or TDEE for weight loss?</h3>
+        <p>
+            For weight loss planning, TDEE is more useful because it accounts for your activity level. 
+            Start by calculating your BMR, then multiply by the appropriate activity factor to find your TDEE. 
+            For weight loss, create a moderate calorie deficit from your TDEE.
+        </p>
+    </div>
+</div>
+
+<div class="cta-buttons">
+    <a href="/" class="button">Calculate BMI</a>
+    <a href="/bmr" class="button">Calculate BMR</a>
+</div>
+
+<style>
+    .section {
+        margin-bottom: 30px;
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .image-row {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+        margin: 30px 0;
+    }
+    .image-container {
+        text-align: center;
+        max-width: 500px;
+        margin-bottom: 20px;
+    }
+    .image-container img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        object-fit: cover;
+        max-height: 300px;
+    }
+    .image-caption {
+        margin-top: 10px;
+        font-style: italic;
+        color: #666;
+    }
+    .cta-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 30px;
+    }
+    .button {
+        display: inline-block;
+        background-color: #2b6777;
+        color: white;
+        padding: 12px 25px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+    .button:hover {
+        background-color: #3a7ca5;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
+    .faq-item {
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    .faq-item h3 {
+        color: #2b6777;
+        margin-bottom: 10px;
+    }
+    .faq-item:last-child {
+        border-bottom: none;
+    }
+    .custom-bmr-diagram {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        margin: 30px auto;
+        text-align: center;
+        max-width: 600px;
+    }
+    .diagram-container {
+        display: flex;
+        justify-content: space-around;
+        margin: 30px 0;
+    }
+    .diagram-item {
+        text-align: center;
+        width: 150px;
+    }
+    .circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+        color: white;
+        font-weight: bold;
+        font-size: 1.2em;
+        transition: all 0.3s ease;
+    }
+    .circle:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .diagram-description {
+        margin-top: 20px;
+        color: #666;
+        font-size: 0.95em;
+        line-height: 1.5;
+    }
+</style>
+{% endblock %} 

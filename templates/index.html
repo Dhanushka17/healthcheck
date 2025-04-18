@@ -6,16 +6,150 @@
         <strong>Error:</strong> {{ error }}
     </div>
 {% endif %}
-<form method="POST">
-    <label>Weight (kg):</label>
-    <input type="text" name="weight" required><br><br>
-    <label>Height (cm):</label>
-    <input type="text" name="height" required><br><br>
-    <button type="submit">Calculate</button>
-</form>
+
+<div class="calculator-container">
+    <form method="POST" id="bmiForm">
+        <div class="form-group">
+            <label for="weight">Weight:</label>
+            <div class="input-with-unit">
+                <input type="number" id="weight" name="weight" step="0.1" min="1" required>
+                <select name="weight_unit" id="weight_unit">
+                    <option value="kg">kg</option>
+                    <option value="lb">lb (pounds)</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="height">Height:</label>
+            <div class="input-with-unit">
+                <input type="number" id="height" name="height" step="0.1" min="1" required>
+                <select name="height_unit" id="height_unit">
+                    <option value="cm">cm</option>
+                    <option value="m">m</option>
+                    <option value="ft">ft (feet)</option>
+                </select>
+            </div>
+            
+            <!-- Additional inches input for feet/inches, shown only when ft is selected -->
+            <div id="inches_container" class="hidden">
+                <label for="inches">Inches:</label>
+                <input type="number" id="inches" name="inches" min="0" max="11" step="0.1" value="0">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="age">Age (years):</label>
+            <input type="number" id="age" name="age" min="2" max="120" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+
+        <button type="submit" class="calculate-btn">Calculate BMI</button>
+    </form>
+</div>
 
 {% if bmi %}
-    <p><strong>Your BMI:</strong> {{ bmi }}</p>
-    <p><strong>Category:</strong> {{ category }}</p>
+    <div class="result-container">
+        <h2>Your Results</h2>
+        <p><strong>Your BMI:</strong> {{ bmi }}</p>
+        <p><strong>Category:</strong> {{ category }}</p>
+        
+        {% if age_note %}
+        <div class="age-note">
+            <p><strong>Age-Specific Note:</strong> {{ age_note }}</p>
+        </div>
+        {% endif %}
+    </div>
 {% endif %}
+
+<style>
+    .calculator-container {
+        background-color: #f8f9fa;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .input-with-unit {
+        display: flex;
+        gap: 10px;
+    }
+    .input-with-unit input {
+        flex: 1;
+    }
+    .input-with-unit select {
+        width: 120px;
+    }
+    .form-group input, .form-group select {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    .hidden {
+        display: none;
+    }
+    #inches_container {
+        margin-top: 10px;
+    }
+    .calculate-btn {
+        background-color: #2b6777;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 20px;
+        transition: background-color 0.3s;
+    }
+    .calculate-btn:hover {
+        background-color: #3a7ca5;
+    }
+    .result-container {
+        margin-top: 30px;
+        background-color: #e6f7ff;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+    .age-note {
+        margin-top: 15px;
+        padding: 10px;
+        background-color: #f8f8f8;
+        border-radius: 5px;
+        border-left: 4px solid #2b6777;
+        text-align: left;
+        font-size: 14px;
+    }
+</style>
+
+<script>
+    // Show/hide inches field when height unit changes
+    document.getElementById('height_unit').addEventListener('change', function() {
+        var inchesContainer = document.getElementById('inches_container');
+        if (this.value === 'ft') {
+            inchesContainer.classList.remove('hidden');
+        } else {
+            inchesContainer.classList.add('hidden');
+        }
+    });
+</script>
 {% endblock %} 
