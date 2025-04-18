@@ -90,8 +90,12 @@ def convert_height(height, unit, inches=0):
     else:
         raise ValueError(f"Unsupported height unit: {unit}")
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
+@app.route('/')
+def home():
+    return render_template('home.html', title="Understanding BMI and BMR")
+
+@app.route('/bmi', methods=['GET', 'POST'])
+def bmi_calculator():
     bmi = None
     category = None
     age_note = None
@@ -161,7 +165,7 @@ def index():
     return render_template('index.html', bmi=bmi, category=category, age_note=age_note, error=error, title="BMI Calculator")
 
 @app.route('/home')
-def home():
+def redirect_home():
     return render_template('home.html', title="Understanding BMI and BMR")
 
 @app.route('/sustainable-engineering')
